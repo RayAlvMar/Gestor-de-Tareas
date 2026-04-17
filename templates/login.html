@@ -1,0 +1,57 @@
+{% extends "index.html" %}
+
+{% block rayito %}
+<h2 class="ms-4 mb-0 fw-light text-uppercase" style="color: #4a5568; letter-spacing: 4px; font-size: 1.4rem;">
+    INICIAR SESIÓN
+</h2>
+{% endblock %}
+
+{% block contenido %}
+
+<div class="container mt-5">
+
+    <div class="text-center mb-4">
+        <h2 class="fw-light">Inicio de sesión</h2>
+        <p class="text-muted">Si volviste aquí es porque te gustó</p>
+</div>
+
+<div class="row justify-content-center">
+<div class="col-md-5">
+<div class="p-4 rounded-4 shadow-sm" style="background-color: #f8f9ff; border: 1px solid #e0e3ff;">
+<form method="POST" action="/login">
+<div class="input-group mb-3 border rounded-3 overflow-hidden">
+     <span class="input-group-text bg-transparent border-0">
+        <i class="bi bi-envelope"></i>
+    </span>
+    <input type="email" name="email" class="form-control border-0" placeholder="Ingresa tu correo electrónico" required>
+</div>
+
+<div class="input-group mb-4 border rounded-3 overflow-hidden">
+    <span class="input-group-text bg-transparent border-0">
+        <i class="bi bi-lock"></i>
+    </span>
+    <input type="password" name="password" class="form-control border-0" placeholder="Ingresa tu contraseña" required>
+</div>
+
+<div class="text-end mb-3 text-center">
+    <a href="/recuperar" class="text-decoration-none small" style="color:#6770da;">
+        ¿Olvidaste tu contraseña?
+    </a>
+</div>
+
+<button type="submit" class="btn w-100 text-white rounded-3" style="background-color:#6770da;">
+    Iniciar sesión
+</button>
+
+<div class="text-center mt-3">
+    <small class="text-muted">¿No tienes cuenta?
+        <a href="/registrar" class="text-decoration-none" style="color:#6770da;">Crea una ahora</a>
+    </small>
+</div>
+
+</form>
+</div>
+</div>
+</div>
+
+{% endblock %}
