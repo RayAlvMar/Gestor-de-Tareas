@@ -13,12 +13,12 @@
 <div class="app">
 <div class="mt-4 ms-4 d-flex align-items-center"> 
     <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" style="width: 70px;" class="me-3"> 
-<div class="d-flex flex-column border-end pe-4"> <span class="h4 mb-0 fw-bold" style="color: #8fb5ed;">OrbitRay</span>
+<div class="d-flex flex-column border-end pe-4"> <span class="h4 mb-0 fw-bold text-primary-custom">OrbitRay</span>
     <small class="text-muted" style="font-size: 0.75rem;">Tu vida de una nueva forma</small>
 </div>
 <div class="ms-4">
     {% block rayito %}
-    <h2 class="ms-4 mb-0 fw-light text-uppercase" style="color: #4a5568; letter-spacing: 4px; font-size: 1.4rem;">
+    <h2 class="ms-4 mb-0 fw-light text-uppercase text-secondary-custom" style="letter-spacing: 4px; font-size: 1.4rem;">
         GESTOR DE TAREAS ✦ 
     </h2>
     {% endblock %}
@@ -27,15 +27,15 @@
 {% block contenido %}
 
 <div class="container mt-5 rounded">
-<h3 class="text-uppercase" style="color: #4a5568; letter-spacing: 2px; font-size: 1.1rem;">
+<h3 class="text-uppercase text-secondary-custom" style="letter-spacing: 2px; font-size: 1.1rem;">
     Bienvenidos a OrbitRay. Aquí podrás organizar tu vida de mejor manera!
 </h3>
 
-<h4 class="text-uppercase" style="color: #5f7397; letter-spacing: 0.5px; font-size: 0.75rem;">
+<h4 class="text-uppercase text-accent-custom" style="letter-spacing: 0.5px; font-size: 0.75rem;">
     Empieza creando una tarea.
 </h4>
 
-<button type="submit" class="btn text-white rounded-3 mt-2" style="background-color:#4d6dff;">
+<button type="submit" class="btn btn-custom rounded-3 mt-2">
     <i class="bi bi-plus-lg"></i>
     Crea una nueva tarea
 </button>
@@ -44,10 +44,10 @@
 
     {% endblock %}
 
-<footer class="mt-5 pt-5 pb-4" style="border-top: 1px solid #e6e9ff;">
+<footer class="mt-5 pt-5 pb-4 footer-border">
 <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
 <div class="text-center text-md-start mb-3 mb-md-0">
-<div class="fw-bold" style="color: #8fb5ed;">OrbitRay</div>
+<div class="fw-bold text-primary-custom">OrbitRay</div>
     <small class="text-muted">Organiza tu vida de forma simple</small>
 </div>
 

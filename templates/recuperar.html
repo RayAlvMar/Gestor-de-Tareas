@@ -1,7 +1,7 @@
 {% extends "index.html" %}
 
 {% block rayito %}
-<h2 class="ms-4 mb-0 fw-light text-uppercase" style="color: #4a5568; letter-spacing: 4px; font-size: 1.4rem;">
+<h2 class="ms-4 mb-0 fw-light text-uppercase text-secondary-custom" style="letter-spacing: 4px; font-size: 1.4rem;">
     Recuperar Contraseña
 </h2>
 {% endblock %}
@@ -10,7 +10,7 @@
 
 <div class="row justify-content-center mt-5">
 <div class="col-md-5">
-<div class="p-4 rounded-4 shadow-sm" style="background-color: #f8f9ff; border: 1px solid #e0e3ff;">
+<div class="p-4 rounded-4 shadow-sm card-custom">
 <form method="POST" action="/login">
 <div class="input-group mb-3 border rounded-3 overflow-hidden">
      <span class="input-group-text bg-transparent border-0">
@@ -26,7 +26,7 @@
     <input type="text" name="text" class="form-control border-0" placeholder="Ingresa algún dato que escribiste al crear la cuenta." required>
 </div>
 
-<button type="submit" class="btn w-100 text-white rounded-3" style="background-color:#6770da;">
+<button type="submit" class="btn btn-link-custom w-100 rounded-3">
     Recuperar la contraseña
 </button>
 

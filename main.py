@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, redirect, send_file
 
 app = Flask(__name__)
 
+usuarios = ["ray@gmail.com", "yo@gmail.com"]
+contrasenas = ["123456", "rayy123"]
 
 @app.route("/")
 def login():
@@ -21,7 +23,18 @@ def inicio():
 
 @app.route("/login", methods=["POST"])
 def iniciar_sesion():
-    return redirect("/index")
+    email = request.form["email"]
+    password = request.form["password"]
+
+    if email in usuarios:
+        i = usuarios.index(email)
+
+        if contrasenas[i] == password:
+            return redirect("/index")
+        else:
+            return render_template("login.html", error="Contraseña incorrecta")
+    else:
+        return render_template("login.html", error="El usuario no existe")
 
 
 @app.route("/registrar", methods=["GET", "POST"])
