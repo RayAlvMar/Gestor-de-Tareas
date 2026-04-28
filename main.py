@@ -37,6 +37,27 @@ def login():
 @app.route("/registrar", methods=["GET", "POST"])
 def registrar():
     if request.method == "POST":
+        nombre = request.form.get("nombre")
+        email = request.form.get("email")
+        password = request.form.get("password")
+        edad = request.form.get("edad")
+        genero = request.form.get("genero")
+
+        usuario_existente = usuarios_collection.find_one({"email": email})
+
+        if usuario_existente:
+            flash("El usuario ya existe")
+            return redirect("/registrar")
+
+        usuarios_collection.insert_one({
+            "nombre": nombre,
+            "email": email,
+            "password": password,
+            "edad": edad,
+            "genero": genero
+        })
+
+        session["usuario"] = email
         return redirect("/index")
     
     return render_template("registro.html")

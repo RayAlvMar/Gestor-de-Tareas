@@ -22,9 +22,6 @@
     color: var(--color-accent);
 }
 
-.text-link-custom {
-    color: var(--color-link);
-}
 
 .btn-custom {
     background-color: var(--color-button);
