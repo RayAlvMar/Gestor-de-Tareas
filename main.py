@@ -1,40 +1,37 @@
-from flask import Flask, render_template, request, redirect, send_file
+from flask import Flask, flash, render_template, request, redirect, send_file, session
+from pymongo import MongoClient
 
 app = Flask(__name__)
+app.secret_key = "rayos_de_orbita"
 
-usuarios = ["ray@gmail.com", "yo@gmail.com"]
-contrasenas = ["123456", "rayy123"]
+client = MongoClient("mongodb://localhost:27017/")
+db = client["gestor_tareas"]
+usuarios_collection = db["usuarios"]
 
 @app.route("/")
+def home():
+    return redirect("/login")
+
+@app.route("/login", methods=["GET", "POST"])
 def login():
-    return render_template("login.html")
+    if request.method == "GET":
+        return render_template("login.html")
 
+    email = request.form.get("email")
+    password = request.form.get("password")
 
-@app.route("/index")
-def index():
-    return render_template("index.html")
+    usuario = usuarios_collection.find_one({
+        "email": email,
+        "password": password
+    })
 
-
-@app.route("/tareas")
-def inicio():
-    tareas = []  
-    return render_template("tareas.html", tareas=tareas)
-
-
-@app.route("/login", methods=["POST"])
-def iniciar_sesion():
-    email = request.form["email"]
-    password = request.form["password"]
-
-    if email in usuarios:
-        i = usuarios.index(email)
-
-        if contrasenas[i] == password:
-            return redirect("/index")
-        else:
-            return render_template("login.html", error="Contraseña incorrecta")
+    if usuario:
+        session["usuario"] = email
+        flash("Inicio de sesión exitoso")
+        return redirect("/index")
     else:
-        return render_template("login.html", error="El usuario no existe")
+        flash("Correo o contraseña incorrectos")
+        return redirect("/login")
 
 
 @app.route("/registrar", methods=["GET", "POST"])
@@ -43,6 +40,22 @@ def registrar():
         return redirect("/index")
     
     return render_template("registro.html")
+
+
+@app.route("/index")
+def index():
+    if "usuario" not in session:
+        return redirect("/login")
+    return render_template("index.html")
+
+
+@app.route("/tareas")
+def inicio():
+    if "usuario" not in session:
+        return redirect("/login")
+
+    tareas = []
+    return render_template("tareas.html", tareas=tareas)
 
 
 @app.route("/recuperar")
