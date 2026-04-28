@@ -27,6 +27,7 @@ def login():
 
     if usuario:
         session["usuario"] = email
+        session["nombre"] = usuario["nombre"]
         flash("Inicio de sesión exitoso")
         return redirect("/index")
     else:
@@ -58,6 +59,7 @@ def registrar():
         })
 
         session["usuario"] = email
+        session["nombre"] = nombre
         return redirect("/index")
     
     return render_template("registro.html")
@@ -67,7 +69,7 @@ def registrar():
 def index():
     if "usuario" not in session:
         return redirect("/login")
-    return render_template("index.html")
+    return render_template("index.html", nombre=session.get("nombre"))
 
 
 @app.route("/tareas")
